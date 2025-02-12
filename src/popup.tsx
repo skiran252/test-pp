@@ -1,13 +1,11 @@
-import { CountButton } from "~features/count-button"
-
-import "~style.css"
-
-function IndexPopup() {
+import React, { useEffect, useRef, useState } from "react";
+import CameraFeed from "~components/CameraFeed";
+const CameraFeedComponent = () => {
   return (
-    <div className="plasmo-flex plasmo-items-center plasmo-justify-center plasmo-h-16 plasmo-w-40">
-      <CountButton />
+    <div className="flex flex-col items-center justify-start min-h-screen bg-gray-100 py-10"> {/* Added py-10 for padding */}
+      <CameraFeed />
     </div>
-  )
-}
+  );
+};
 
-export default IndexPopup
+export default CameraFeedComponent;

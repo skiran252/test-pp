@@ -10,9 +10,14 @@
     "package": "plasmo package"
   },
   "dependencies": {
+    "@plasmohq/messaging": "^0.7.1",
+    "@plasmohq/permission-ui": "^0.2.5",
+    "@xenova/transformers": "^2.17.2",
+    "onnxruntime": "^1.7.0",
     "plasmo": "0.89.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "sharp": "^0.32.0",
     "tailwindcss": "3.4.1"
   },
   "devDependencies": {
@@ -25,9 +30,52 @@
     "prettier": "3.2.4",
     "typescript": "5.3.3"
   },
+  "background": {
+    "service_worker": "background.ts",
+    "type": "module"
+  },
   "manifest": {
     "host_permissions": [
       "https://*/*"
+    ],
+    "permissions": [
+      "camera",
+      "microphone",
+      "storage",
+      "scripting"
+    ],
+    "icons": {},
+    "manifest_version": 3,
+    "content_security_policy": {
+      "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
+    },
+    "web_accessible_resources": [
+      {
+        "matches": [
+          "<all_urls>"
+        ],
+        "resources": [
+          "__plasmo_hmr_proxy__"
+        ]
+      }
+    ]
+  },
+  "pnpm": {
+    "supportedArchitectures": {
+      "os": [
+        "darwin"
+      ],
+      "cpu": [
+        "arm64"
+      ]
+    },
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "@swc/core",
+      "esbuild",
+      "lmdb",
+      "msgpackr-extract",
+      "sharp"
     ]
   },
   "packageManager": "pnpm@10.2.1+sha512.398035c7bd696d0ba0b10a688ed558285329d27ea994804a52bad9167d8e3a72bcb993f9699585d3ca25779ac64949ef422757a6c31102c12ab932e5cbe5cc92"
